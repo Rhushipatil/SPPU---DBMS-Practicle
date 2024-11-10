@@ -1,0 +1,77 @@
+test> show dbs;
+admin    40.00 KiB
+config  108.00 KiB
+dbs       8.00 KiB
+local    40.00 KiB
+rp      112.00 KiB
+test> use rp;
+switched to db rp
+rp> show collections;
+student
+teacher
+rp> db.teacher.find();
+[
+  {
+    _id: ObjectId('6730d7efcd325174910d8190'),
+    ID: 1,
+    NAME: 'RAM',
+    SUBJECT: 'DBMS'
+  },
+  {
+    _id: ObjectId('6730d828cd325174910d8191'),
+    ID: 1,
+    NAME: 'SITA',
+    SUBJECT: 'SPOS'
+  },
+  {
+    _id: ObjectId('6730d85bcd325174910d8192'),
+    ID: 3,
+    NAME: 'PRANAV',
+    SUBJECT: 'JAVA'
+  }
+]
+
+
+rp> db.teacher.insertOne({ID:4,NAME:"RK",SUBJECT:"WEB_DEV"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6730e43e0a67a1eb0c0d8190')
+}
+rp> db.teacher.find();
+[
+  {
+    _id: ObjectId('6730d7efcd325174910d8190'),
+    ID: 1,
+    NAME: 'RAM',
+    SUBJECT: 'DBMS'
+  },
+  {
+    _id: ObjectId('6730d828cd325174910d8191'),
+    ID: 1,
+    NAME: 'SITA',
+    SUBJECT: 'SPOS'
+  },
+  {
+    _id: ObjectId('6730d85bcd325174910d8192'),
+    ID: 3,
+    NAME: 'PRANAV',
+    SUBJECT: 'JAVA'
+  },
+  {
+    _id: ObjectId('6730e43e0a67a1eb0c0d8190'),
+    ID: 4,
+    NAME: 'RK',
+    SUBJECT: 'WEB_DEV'
+  }
+]
+
+rp> db.teacher.updateOne({ID:3},{$set:{SUBJECT:"DSA"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+rp> db.teacher.deleteOne({ID:3});
+{ acknowledged: true, deletedCount: 1 }
