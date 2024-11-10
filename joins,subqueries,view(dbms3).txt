@@ -1,0 +1,100 @@
+create database ram;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> use ram;
+Database changed
+mysql> create table ram(seat_no int, roll_no int, name varchar(20),dob date,mobile_no int);
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> insert into ram values('3214' , '1' , 'rhushi' , '2005-02-26' , '77454');
+
+
+mysql> insert into ram values('2222' , '2' , 'jyoti' , '2001-04-24' , '77454
+');
+
+
+mysql> select * from ram;
+
+mysql> create view te as select Seat_no,Roll_no,Name from ram;
+
+
+mysql> select * from ram;
+
+
+mysql> select seat_no,name from ram;
+
+
+mysql> desc ram;
+
+
+mysql> create table sakshi(roll_no int, name char(20),studient_id int);
+
+mysql> select * from ram;
+
+mysql> insert into sakshi values('5','sakshi','45');
+
+
+mysql> insert into sakshi values('6','sak','55'),
+    -> ('7','sk','66');
+
+
+mysql> insert into sakshi values('8','rp','77'),
+    -> ('9','vp','88');
+
+
+mysql> create table sakshi1(roll_no int, prn_no int, mobile_no int, year char(10));
+
+
+mysql> insert into Sakshi1 values('2', '101', '987654', 'Third');
+
+
+mysql> select * from sakshi;
+
+
+mysql> select * from sakshi1;
+
+
+mysql> insert into sakshi1 values('3','102','123456','Third'),('4','103','846372','Third'),('5','104', '352718','Third');
+
+mysql> select *from sakshi1;
+
+mysql> select * from sakshi inner join sakshi1 on
+    -> sakshi.roll_no=sakshi1.roll_no;
+
+
+mysql> select *from sakshi left outer join sakshi1 on sakshi.roll_no=sakshi1.roll_no;
+
+
+mysql> select *from sakshi right outer join sakshi1 on sakshi.roll_no=sakshi1.roll_no;
+
+mysql> select *from ram;
+
+
+mysql> select *from ram where dob is not null;
+
+
+mysql> create table employee(Emp_id int,Emp_name char(20),join_date date,Position Char(20),Salary int);
+
+
+mysql> insert into employee values('1','prince','2019-05-14','CEO','500000');
+
+
+mysql> insert into employee values('2','maur','2017-08-29','HR','87000');
+
+
+mysql> insert into employee values('3','abhishekh','2019-09-09','HR','75000');
+
+
+mysql> insert into employee values('4','diksha','2011-06-09','CEO','750000');
+
+
+mysql> select *from employee;
+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee where emp_name='prince';
+mysql> select salary from employee where emp_name='prince';
+mysql> select * from employee where salary >(select salary from employee where emp_name='prince');
+mysql> select * from employee where position = (select position employee where emp_name='diksha');
+mysql> select * from employee where position = (select position from employee where emp_name='prince');
+mysql> select * from employee where position in (select position from employee where emp_name='prince');
